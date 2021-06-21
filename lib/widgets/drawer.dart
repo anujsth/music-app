@@ -9,7 +9,9 @@ class NavigationDrawerWidget extends StatelessWidget {
     return Drawer(
       child: Material(
         child: Container(
-          decoration: BoxDecoration(color: Theme.of(context).focusColor),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/hill.jpg'), fit: BoxFit.cover)),
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -17,12 +19,12 @@ class NavigationDrawerWidget extends StatelessWidget {
                   margin: EdgeInsets.zero,
                   padding: EdgeInsets.zero,
                   child: Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage(
-                              'assets/hill.jpg',
-                            ))),
+                    // decoration: BoxDecoration(
+                    //     image: DecorationImage(
+                    //         fit: BoxFit.fill,
+                    //         image: AssetImage(
+                    //           'assets/hill.jpg',
+                    //         ))),
                     child: Row(
                       children: [
                         CircleAvatar(

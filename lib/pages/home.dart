@@ -4,6 +4,7 @@
 
 import 'package:appanuj/models/list.dart';
 import 'package:appanuj/widgets/widget.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:appanuj/widgets/drawer.dart';
@@ -37,6 +38,23 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 50,
+        animationDuration: Duration(milliseconds: 200),
+        animationCurve: Curves.bounceInOut,
+        color: Theme.of(context).backgroundColor,
+        buttonBackgroundColor: Colors.black,
+        index: 1,
+        backgroundColor: Colors.black,
+        items: <Widget>[
+          Icon(Icons.home, size: 20, color: Colors.white),
+          Icon(Icons.people, size: 20, color: Colors.white),
+          Icon(Icons.music_note, size: 20, color: Colors.white),
+        ],
+        onTap: (index) {
+          debugPrint('debug $index');
+        },
+      ),
       body: Builder(
         builder: (context) => Container(
           width: 500,
@@ -129,42 +147,48 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: const EdgeInsets.only(
                           left: 10, top: 25, right: 10, bottom: 5),
-                      child: Container(
-                        height: 120,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            color: Color(0xff14213D),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 35, left: 10),
-                              child: Text(
-                                "Polyphia",
-                                style: TextStyle(
-                                    color: Theme.of(context).highlightColor),
-                                textScaleFactor: 1.5,
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 4.0, top: 35),
-                              child: Icon(
-                                Icons.music_note,
-                                color: Theme.of(context).highlightColor,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 170, top: 15),
-                              child: CircleAvatar(
-                                radius: 40,
-                                backgroundImage: AssetImage(
-                                  'assets/samurai.png',
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/music');
+                        },
+                        child: Container(
+                          height: 120,
+                          width: 50,
+                          decoration: BoxDecoration(
+                              color: Color(0xff14213D),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 35, left: 10),
+                                child: Text(
+                                  "Polyphia",
+                                  style: TextStyle(
+                                      color: Theme.of(context).highlightColor),
+                                  textScaleFactor: 1.5,
                                 ),
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 4.0, top: 35),
+                                child: Icon(
+                                  Icons.music_note,
+                                  color: Theme.of(context).highlightColor,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 170, top: 15),
+                                child: CircleAvatar(
+                                  radius: 40,
+                                  backgroundImage: AssetImage(
+                                    'assets/samurai.png',
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

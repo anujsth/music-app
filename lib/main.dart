@@ -1,5 +1,6 @@
 import 'package:appanuj/pages/home.dart';
 import 'package:appanuj/pages/login.dart';
+import 'package:appanuj/pages/music.dart';
 import 'package:flutter/material.dart';
 import 'package:appanuj/widgets/theme.dart';
 
@@ -23,6 +24,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/login': (context) => LoginPage(),
         '/home': (context) => HomePage(),
+        '/music': (context) => music(),
       },
       themeMode: ThemeMode.system,
       theme: themeData.lightTheme(context),
